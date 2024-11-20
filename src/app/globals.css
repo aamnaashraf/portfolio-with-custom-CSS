@@ -1,107 +1,515 @@
-:root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* global.css */
 
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+/* Global Styles */
+body {
+  color: #fff;
+  background-color: black;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
 
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
 
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
+/* Header Component Styles */
+#header {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-image: url('/banner_bg.png');
+  background-position: left 100px top 100px;
+  background-size: 35%;
+  Z-index:10;
+}
 
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
+.header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100vh - 60px);
+}
+
+.hidden-lg {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .hidden-lg {
+    display: block;
   }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
+.text-container {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.25;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+padding: 6rem;
+
+}
+
+.text-container p {
   margin: 0;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.text-container p.description {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: #b91c1c; /* Tailwind's text-red-800 */
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@media (min-width: 640px) {
+  .text-container {
+    font-size: 60px;
+  }
 }
 
-a {
-  color: inherit;
+  /* Navbar Component Styles */
+  .navbar-container {
+    background-color: #1e3a8a; /* Tailwind's bg-blue-900 */
+    padding: 1rem 10px; /* Unified padding for all sides */
+    margin-right:auto;
+    margin-left: auto;
+    position: fixed;
+    width: 100%;
+    top: 0; /* Ensures the navbar is at the top of the screen */
+    left: 0; /* Ensures the navbar spans the full width */
+    z-index: 1000; /* Ensures the navbar stays above other content */
+    justify-items: center;
+    align-items: center;
+    display:flex
+}
+
+  
+  
+  
+.navbar-title {
+  font-size: 1.25rem; /* Tailwind's text-xl */
+  font-weight: 500; /* Tailwind's font-medium */
+  color: white;
+}
+
+.navbar-links {
+  display:flex; /* Change to flex for desktop view */
+  gap: 2.5rem; /* Tailwind's gap-10 */
+   /* Push the links to the right */
+  padding-right: 30px;
+  padding-left: 20px;
+  margin-left: auto;
+}
+
+.navbar-link {
+  color: white;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.navbar-link:hover {
+  color: #b45309; /* Tailwind's text-yellow-700 */
+  text-decoration: underline;
+}
+
+
+
+  /* Medium (md) and larger screens */
+  @media (min-width: 768px) {
+    .navbar-links {
+      display: flex;
+    }
+  
+    .navbar-links {
+      gap: 4rem; /* Tailwind's lg:gap-16 */
+    }
+  }
+  
+  /* Mobile Menu Icon */
+  .menu-icon {
+    display: block;
+  }
+  
+  @media (min-width: 768px) {
+    .menu-icon {
+      display: none;
+    }
+  }
+  
+
+
+
+  /* Heading Component Styles */
+.heading-container {
+    text-align: center;
+    font-size: 2.25rem; /* Tailwind's text-4xl */
+    padding-bottom: 2rem; /* Tailwind's pb-8 */
+  }
+  
+  .heading-title {
+    display: inline-block;
+   text-decoration: underline;
+    border-bottom: 4px solid black;
+    padding-bottom: 0.5rem; /* Tailwind's pb-2 */
+  }
+
+
+
+  /* Card Component Styles */
+.card {
+  border:2px solid #333;
+  width: 300px;
+  max-width: 300px;
+  border-color:  #08E95E;
+  
+}
+
+@media (min-width: 640px) {
+  .card {
+    width: 350px; /* Tailwind's sm:w-[350px] */
+    max-width: 350px;
   }
 }
+
+.card-image {
+  width: 300px;
+  height: auto;
+}
+
+@media (min-width: 640px) {
+  .card-image {
+    width: 350px; /* Tailwind's sm:w-[350px] */
+  }
+}
+
+.card-content {
+  padding: 1rem; /* Tailwind's p-4 */
+  gap: 1rem; /* Tailwind's space-y-4 equivalent */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 2.25rem; /* Tailwind's text-4xl */
+  font-weight: 200; /* Tailwind's font-extralight */
+  line-height: 2.5rem;
+}
+
+.card-description {
+  font-size: 1rem; /* Default font size */
+}
+
+
+
+.tag{
+  background-color: var(--tag-bg-color, #f3f4f6); /* Default tag background */
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #0abde3;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  padding:3px 10px;
+  display: inline-block;
+  color:#fff;
+  font-size: 0.875rem;
+  gap: 4rem; /* Adding spacing between tags */
+}
+
+.tag:last-child {
+  margin-right: 0;
+}
+
+.tag:nth-child(2) {
+  background-color: #ed4d4b;
+}
+
+.tag:nth-child(3):last-child {
+  background-color: #a55eea;
+}
+
+
+/* About Component Styles */
+.about-container {
+  padding-top: 4rem; /* Tailwind's pt-32 */
+  max-width: 1200px; /* Approximation for container width */
+  margin: 0 auto; /* Center align */
+}
+
+.about-title {
+  font-size: 2.25rem; /* Tailwind's text-4xl */
+}
+
+@media (min-width: 768px) {
+  .about-title {
+    font-size: 3rem; /* Tailwind's md:text-5xl */
+  }
+}
+
+.about-description {
+  color: #6b7280; /* Tailwind's text-gray-500 */
+  padding-top: 0.25rem; /* Tailwind's pt-4 */
+  line-height: 1.6;
+}
+
+.section-heading {
+  color: #3b82f6; /* Tailwind's text-blue-400 */
+  font-size: 1.5rem; /* Tailwind's text-2xl */
+  margin-top: 1.5rem; /* Tailwind's mt-6 */
+}
+
+.section-text {
+  color: #fde68a; /* Tailwind's text-yellow-100 */
+  margin-top: 0.5rem; /* Tailwind's mt-2 */
+  line-height: 1.5;
+}
+
+
+/* Projects Component Styles */
+.projects-container {
+  padding-top: 5rem; /* Tailwind's pt-32 */
+  max-width: 1200px; /* Approximation for container width */
+  margin: 0 auto; /* Center align */
+
+}
+
+.projects-grid {
+  padding-bottom: 7rem;
+  display: grid;
+   /* Tailwind's gap-10 */
+  justify-items: center; /* Tailwind's place-items-center */
+  border: #08E95E;
+  border-color: #08E95E;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); /* Tailwind's md:grid-cols-2 */
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr); /* Tailwind's lg:grid-cols-3 */
+    gap: 0; /* Tailwind's xl:gap-0 */
+    row-gap: 2.5rem; /* Tailwind's xl:gap-y-10 */
+  }
+  .menuLink {
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .menuLink:hover {
+    color: #ed4d4b;
+  }
+  
+  .tags {
+    background-color: #0abde3;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 3px 10px;
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+  }
+  
+  .tags:last-child {
+    margin-right: 0;
+  }
+  
+  .tags:nth-child(2) {
+    background-color: #ed4d4b;
+  }
+  
+  .tags:nth-child(2):last-child {
+    background-color: #a55eea;
+  }
+  
+}
+
+
+/* Skills Component Styles */
+.skills-container {
+  padding-top: 4rem; /* Tailwind's pt-32 */
+  max-width: 1200px; /* For consistent layout */
+  margin: 0 auto;
+  display:flex;
+  justify-content: center;
+}
+
+.skills-grid {
+  display: flex;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr; /* Base layout with two columns */
+  gap: 5rem; /* Tailwind's gap-20 */
+  align-items: center;
+  padding-bottom: 8rem;
+  
+}
+
+@media (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr); /* Tailwind's md:grid-cols-2 */
+  }
+}
+
+.skills-heading {
+  font-size: 2.25rem; /* Tailwind's text-4xl */
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.skills-description {
+  color: #6b7280; /* Tailwind's text-gray-500 */
+ 
+  padding-bottom: 200px;
+}
+
+.tech-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Tailwind's grid-cols-2 */
+  color: #f59e0b; /* Tailwind's text-yellow-600 */
+  font-size: 1.5rem; /* Tailwind's text-3xl */
+  gap: 2rem;
+}
+
+.tech-column {
+  display: flex;
+  padding-top: 30px;
+  flex-direction: column;
+  gap: 0.25rem; /* Tailwind's space-y-2 */
+}
+
+.soft-skills {
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: #1f2937; /* Tailwind's bg-gray-800 */
+  color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-lg */
+  margin-top: 1.5rem;
+}
+
+.soft-skills-heading {
+  font-size: 1.5rem; /* Tailwind's text-2xl */
+  font-weight: bold;
+  text-align: center;
+}
+
+.soft-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; /* Tailwind's gap-4 */
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .soft-skills-grid {
+    grid-template-columns: repeat(3, 1fr); /* Tailwind's md:grid-cols-3 */
+  }
+}
+
+.skill-card {
+  padding: 1rem;
+  background-color: #111827; /* Tailwind's bg-gray-900 */
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-md */
+  transition: transform 0.3s;
+}
+
+.skill-card:hover {
+  transform: scale(1.05); /* Tailwind's hover:scale-105 */
+}
+
+.skill-title {
+  font-size: 1.125rem; /* Tailwind's text-xl */
+  font-weight: 600;
+  color: #3b82f6; /* Tailwind's text-blue-400 */
+}
+
+.skill-description {
+  margin-top: 0.25rem; /* Tailwind's mt-1 */
+  font-size: 0.875rem; /* Tailwind's text-sm */
+}
+
+/* Contact Component Styles */
+.contact-container {
+  padding-top: 8rem; /* Tailwind's pt-32 */
+  max-width: 1200px; /* For consistent layout */
+  margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem; /* Tailwind's gap-10 */
+  align-items: center;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); /* Tailwind's md:grid-cols-2 */
+  }
+}
+
+.contact-form > * + * {
+  margin-top: 2rem;
+}
+
+
+.contact-heading {
+  font-size: 3rem; /* Tailwind's text-5xl */
+}
+
+.contact-description {
+  color: #4b5563; /* Tailwind's text-gray-600 */
+  font-size: 1.125rem; /* Tailwind's text-[18px] */
+  padding-top: 0.5rem;
+}
+
+.contact-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.125rem;
+  color: #3b82f6; /* Tailwind's text-blue-600 */
+}
+
+.contact-form > * + * {
+  margin-top: 2rem;
+}
+
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /* Tailwind's gap-1 */
+}
+
+.input-field input,
+.input-field textarea {
+  background: transparent;
+  border: 1px solid #d1d5db; /* Tailwind's border-accent */
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.375rem; /* Tailwind's rounded */
+}
+
+.input-field textarea {
+  resize: vertical;
+}
+
+.send-btn {
+  background-color: #2563eb; /* Tailwind's bg-blue-600 */
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 0.375rem; /* Tailwind's rounded */
+  border: none;
+  cursor: pointer;
+}
+
+.send-btn:hover {
+  background-color: #1d4ed8; /* Tailwind's bg-blue-700 */
+}
+
+
+/* Footer Styles */
+.footer-container {
+  background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+  color: white;
+  margin-top: 3rem;
+  padding:1px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+
